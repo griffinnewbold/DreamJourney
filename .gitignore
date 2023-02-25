@@ -1,2 +1,4 @@
 .venv/
-website/
+website/node_modules
+website/package-lock.json
+website/package.json
