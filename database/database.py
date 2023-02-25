@@ -27,7 +27,7 @@ def create_user_database(name, email, password,db):
     
     data = {}
 
-    dream_dict = {"Skip" : {"Text": "defaultText", "Images": "defaultImage"}}
+    dream_dict = {"Skip" : {"Text": "defaultText", "Images": "defaultImage", "Date": "defaultDate"}}
 
     data["Name"] = name
     data["Password"] = password
@@ -51,11 +51,11 @@ def retrieve_user_data(key, email,db):
             return element.val()
     return None
 
-def update_user_database(email, imageURL, text,db):
+def update_user_database(email, imageURL, text, date, db):
     dreams_dict = retrieve_user_data("Dreams", email, db)
     dreamTitle = "Dream " + str(len(dreams_dict))
     
-    dreams_dict[dreamTitle] = {"Text": text, "Images": imageURL}
+    dreams_dict[dreamTitle] = {"Text": text, "Images": imageURL, "Date": date}
     
     email = email[:-4]
     db.child("Users").child(email).update({"Dreams":dreams_dict})

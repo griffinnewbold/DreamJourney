@@ -17,9 +17,12 @@ def login():
     
 
     valid_login = dbs.validate_user(email, password,db)
-    print(valid_login)
-    data = {"validate": valid_login}
     
+
+    if(valid_login):
+        data = {"Dreams": query(email)}
+    else:
+        data = {"Dreams": None}
 
     return json.dumps(data)
 
@@ -36,6 +39,12 @@ def create():
     
 
     return json.dumps(data)
+
+@app.route("/query", methods=["POST"])
+def query(email):
+    return dbs.retrieve_user_data("Dreams", email,db)
+    
+
 
 @app.after_request
 def after_request(response):
