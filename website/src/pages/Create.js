@@ -7,9 +7,6 @@ export default function Create(props) {
     const nameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
-
-    const d = props.location.data
-    console.log(d)
   
     function fetchPaths() {  
       

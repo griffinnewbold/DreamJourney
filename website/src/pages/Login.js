@@ -30,8 +30,11 @@ export default function Login() {
         password: password
       }
     ).then(response => {
-      console.log(response.data)
-      setStateData([String(response.data["validate"]), response.data["dreams"]])
+      setStateData([{
+        "validate": String(response.data["validate"]), 
+        "email": email, 
+        "password": password, 
+        "data": response.data["dreams"]}])
     })
   }
 
@@ -49,6 +52,7 @@ export default function Login() {
     fontSize: "18px"
   }
 
+  if (stateData[0] === "undefined" || stateData[0]["validate"] === "false")
   return (
     <>
       <h1 style={titleStyle}>
@@ -64,10 +68,25 @@ export default function Login() {
         <label>Password:</label>
         <input type="text" ref={passwordRef} name="password"/><br></br>
         <button onClick={fetchPaths}>Submit</button>
-        <LoginError validate={stateData}/>
+        <LoginError validate={stateData[0]["validate"]}/>
       </form>
       <button onClick={transferPage}>Create Account</button>
-      <Dashboard data={stateData}/>
+      <Dashboard data={stateData[0]}/>
+    </>
+  )
+
+  return (
+    <>
+      <h1 style={titleStyle}>
+        {"Dream Journey"}
+      </h1>
+      <h2>
+        {"Welcome"}
+      </h2>
+      <p style={descripStyle}>
+        {"Griffin uses dark mode"}
+      </p>
+      <Dashboard data={stateData[0]}/>
     </>
   )
 

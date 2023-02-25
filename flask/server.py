@@ -1,4 +1,5 @@
 import json
+import requests
 from flask import Flask, request, render_template
 import sys
 sys.path.insert(1, "./")
@@ -13,8 +14,6 @@ app = Flask(__name__)
 def login():
     email = request.json["email"]
     password = request.json["password"]
-
-    
 
     valid_login = dbs.validate_user(email, password,db)
     data = {}
@@ -43,6 +42,34 @@ def create():
 def query(email):
     return dbs.retrieve_user_data("Dreams", email,db)
     
+@app.route("/add", methods=["POST"])
+def add():
+    """ website 
+    """
+    date = request.json["date"]
+    email = request.json["email"]
+    text = request.json["text"]
+
+    jsons = {
+        "key": "lywSnAEhQsV8J2SgETq903xSBCHIoSOh0U8vRzkSQWtJYeJ3pfCOytrTMNP7",
+        "model_id": "arcane-diffusion",
+        "prompt": text,
+        "negative_prompt": "",
+        "width": "512",
+        "height": "512",
+        "samples": "3",
+        "safety_checker": "no",
+        "num_inference_steps": "30",
+        "enhance_prompt": "no",
+        "guidance_scale": 7.5,
+    }
+    response = requests.post("https://stablediffusionapi.com/api/v4/dreambooth", json=jsons)
+    response = dict(json.loads(response.content.decode('utf-8')))
+    images = [link.replace("///", "/") for link in response["output"]]
+
+    reply = {"images": images}
+    
+    return json.dumps(reply)
 
 
 @app.after_request
