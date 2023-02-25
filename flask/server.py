@@ -23,6 +23,18 @@ def login():
 
     return json.dumps(data)
 
+@app.route("/create", methods=["POST"])
+def login():
+    name = request.json["name"]
+    email = request.json["email"]
+    password = request.json["password"]
+
+    ## YOUR CODE ##
+    data = {"success": bool}
+    
+
+    return json.dumps(data)
+
 @app.after_request
 def after_request(response):
     white_origin = ['http://localhost:3000']
