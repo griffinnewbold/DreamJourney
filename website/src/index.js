@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Login from './pages/Login';
 import Create from './pages/Create';
+import Dashboard from './pages/Dashboard';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 
@@ -11,6 +12,7 @@ export default function MyApp() {
       <Routes>
         <Route exact path="/" element={<Login/>}/>
         <Route exact path="/create" element={<Create/>}/>
+        <Route exact path="/dashboard" element={<Dashboard/>}/>
       </Routes>
     </Router>
   );

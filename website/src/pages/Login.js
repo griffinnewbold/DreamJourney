@@ -1,13 +1,19 @@
 import React, {useState, useRef} from "react"
 import axios from "axios"
+import {Link} from "react-router-dom";
+import LoginError from '../LoginError'
 
 export default function Login() {
+
+  const [stateData, setStateData] = useState([]);
 
   // Input references.
   const emailRef = useRef()
   const passwordRef = useRef()
 
-  function fetchPaths() {  
+  function fetchPaths(event) {  
+
+    event.preventDefault()
 
     const email = emailRef.current.value
     const password = passwordRef.current.value
@@ -16,7 +22,6 @@ export default function Login() {
 
     emailRef.current.value = null
     passwordRef.current.value = null
-    console.log("hoeeeee")
     axios.post(
       "http://127.0.0.1:8000/login", 
       {
@@ -24,7 +29,7 @@ export default function Login() {
         password: password
       }
     ).then(response => {
-      console.log(response.data)
+      setStateData([String(response.data["validate"])])
     })
   }
 
@@ -58,6 +63,9 @@ export default function Login() {
         <input type="text" ref={passwordRef} name="password"/><br></br>
         <button onClick={fetchPaths}>Submit</button>
       </form>
+      <Link to="/create"> {"Create your account"} </Link>
+      <p>{stateData}</p>
+      <LoginError validate={stateData}/>
     </>
   )
 }

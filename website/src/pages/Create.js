@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react"
 import axios from "axios"
 
-export default function Login() {
+export default function Create() {
 
     // Input references.
     const nameRef = useRef()
@@ -20,7 +20,7 @@ export default function Login() {
       passwordRef.current.value = null
       console.log("hoeeeee")
       axios.post(
-        "http://127.0.0.1:8000/login", 
+        "http://127.0.0.1:8000/create", 
         {
           name: name,
           email: email, 

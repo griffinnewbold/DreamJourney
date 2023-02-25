@@ -1,0 +1,31 @@
+.element {
+    text-align: center;
+    margin: auto;
+    width: 1000px;
+    font-size: 20px;
+    display: flex;
+    background-color: paleturquoise;
+    margin-bottom: 20px;
+}
+
+.picture {
+    width: 20%; 
+    background-color: pink;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.description {
+    width: 40%;
+}
+
+.image {
+    width: 100%;
+}
+
+.date {
+    background-color: peachpuff;
+    padding: 10px
+}

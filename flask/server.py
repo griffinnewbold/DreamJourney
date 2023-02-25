@@ -17,12 +17,11 @@ def login():
     
 
     valid_login = dbs.validate_user(email, password,db)
-    
+    data = {}
+    data["validate"] = valid_login
 
     if(valid_login):
-        data = {"Dreams": query(email)}
-    else:
-        data = {"Dreams": None}
+        data = {"dreams": query(email)}
 
     return json.dumps(data)
 
