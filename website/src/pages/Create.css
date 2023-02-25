@@ -1,0 +1,49 @@
+.header {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Josefin Sans';
+}
+
+.subheader {
+    text-align: center;
+    font-size: 45px;
+    font-family: 'Josefin Sans';
+}
+
+input {
+    margin-bottom: 5px;
+}
+
+.label_email{
+    margin-right: 55px;
+    margin-bottom: 20px;
+    font-family: 'Josefin Sans';
+    font-size: 27px;
+}
+
+.label_pwd{
+    font-family: 'Josefin Sans';
+    font-size: 27px;
+}
+
+.acc_div {
+    position: absolute;
+    top:30%;
+    right: 10%;
+}
+
+.main_layer {
+    background-color: brown;
+    margin:0;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+.login {
+    position: absolute;
+    bottom: 10px;
+    width: 25%;
+    margin-left: 35%;
+    text-align: center;
+    font-size: 25px;
+}

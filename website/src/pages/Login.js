@@ -3,9 +3,12 @@ import axios from "axios"
 import {Link} from "react-router-dom";
 import LoginError from '../LoginError'
 import Dashboard from './Dashboard'
+import "./Login.css"
 
 export default function Login() {
 
+
+  
   const [stateData, setStateData] = useState(["undefined"]);
 
   // Input references.
@@ -51,18 +54,18 @@ export default function Login() {
 
   return (
     <>
-      <h1 style={titleStyle}>
-        {"Dream Journey"}
+      <h1 className = "header">
+        {"DreamJourney"}
       </h1>
       <p style={descripStyle}>
         {"Griffin uses dark mode"}
       </p>
       <form style={divStyle}>
-        <label>Email:</label>
+        <label className="label_email">Email:</label>
         <input type="text"  ref={emailRef} name="email"/><br></br>
 
-        <label>Password:</label>
-        <input type="text" ref={passwordRef} name="password"/><br></br>
+        <label className="label_pwd">Password: </label>
+        <input type="password" ref={passwordRef} name="password"/><br></br>
         <button onClick={fetchPaths}>Submit</button>
         <LoginError validate={stateData}/>
       </form>

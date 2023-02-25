@@ -1,5 +1,6 @@
 import React, {useState, useRef} from "react"
 import axios from "axios"
+import "./Create.css"
 
 export default function Create(props) {
 
@@ -8,8 +9,6 @@ export default function Create(props) {
     const emailRef = useRef()
     const passwordRef = useRef()
 
-    const d = props.location.data
-    console.log(d)
   
     function fetchPaths() {  
       
@@ -50,25 +49,32 @@ export default function Create(props) {
   
     return (
       <>
-        <h1 style={titleStyle}>
-          {"Create Your Account"}
+        <div className="main_layer">
+        <h1 className="header">
+          {"DreamJourney"}
         </h1>
-        <p style={descripStyle}>
-          {"Griffin uses dark mode"}
-        </p>
+        </div>
+        <div className="image">
+        <img src= "dreamjourney_logo.png" alt="DreamJourney Logo"/>
+        </div>
+        <div className="acc_div">
+        <h4 className="subheader">
+          {"Create Your Account"}
+        </h4>
         <form style={divStyle}>
 
-          <label>Name:</label>
+          <label className="label_email">Name:</label>
           <input type="text"  ref={nameRef} name="name"/><br></br>
 
-          <label>Email:</label>
+          <label className="label_email">Email:</label>
           <input type="text"  ref={emailRef} name="email"/><br></br>
   
-          <label>Password:</label>
+          <label className="label_pwd">Password: </label>
           <input type="text" ref={passwordRef} name="password"/><br></br>
           <button onClick={fetchPaths}>Submit</button>
         </form>
-        <button onClick={transferPage}>Return to Login</button>
+        </div>
+        <button className = "login"onClick={transferPage}>Return to Login</button>
       </>
     )
 
