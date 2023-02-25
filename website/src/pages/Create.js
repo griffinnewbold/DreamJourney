@@ -1,12 +1,15 @@
 import React, {useState, useRef} from "react"
 import axios from "axios"
 
-export default function Create() {
+export default function Create(props) {
 
     // Input references.
     const nameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
+
+    const d = props.location.data
+    console.log(d)
   
     function fetchPaths() {  
       

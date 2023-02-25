@@ -2,10 +2,11 @@ import React, {useState, useRef} from "react"
 import axios from "axios"
 import {Link} from "react-router-dom";
 import LoginError from '../LoginError'
+import Dashboard from './Dashboard'
 
 export default function Login() {
 
-  const [stateData, setStateData] = useState([]);
+  const [stateData, setStateData] = useState(["undefined"]);
 
   // Input references.
   const emailRef = useRef()
@@ -66,7 +67,7 @@ export default function Login() {
         <LoginError validate={stateData}/>
       </form>
       <button onClick={transferPage}>Create Account</button>
-      
+      <Dashboard data={stateData}/>
     </>
   )
 

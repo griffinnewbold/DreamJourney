@@ -6,20 +6,20 @@ export default function Element({element}) {
     <>
         <div className="element">
             <div className="picture">
-                <img src={element['link']} className="image"></img>
+                <img src={element['Images'][0]} className="image"></img>
             </div>
             <div className="picture">
-                <img src={element['link2']} className="image"></img>
+                <img src={element['Images'][1]} className="image"></img>
             </div>
             <div className="picture">
-                <img src={element['link3']} className="image"></img>
+                <img src={element['Images'][2]} className="image"></img>
             </div>
             <div className="description">
                 <div className="date">
-                    {element['date']}
+                    {element['Date']}
                 </div>
                 <div>
-                    {element['description']}
+                    {element['Text']}
                 </div>
             </div>
         </div>
