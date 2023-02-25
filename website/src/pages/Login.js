@@ -29,7 +29,8 @@ export default function Login() {
         password: password
       }
     ).then(response => {
-      setStateData([String(response.data["validate"])])
+      console.log(response.data)
+      setStateData([String(response.data["validate"]), response.data["dreams"]])
     })
   }
 
@@ -62,10 +63,9 @@ export default function Login() {
         <label>Password:</label>
         <input type="text" ref={passwordRef} name="password"/><br></br>
         <button onClick={fetchPaths}>Submit</button>
+        <LoginError validate={stateData}/>
       </form>
       <Link to="/create"> {"Create your account"} </Link>
-      <p>{stateData}</p>
-      <LoginError validate={stateData}/>
     </>
   )
 }

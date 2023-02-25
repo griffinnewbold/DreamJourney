@@ -21,7 +21,7 @@ def login():
     data["validate"] = valid_login
 
     if(valid_login):
-        data = {"dreams": query(email)}
+        data["dreams"] = query(email)
 
     return json.dumps(data)
 
