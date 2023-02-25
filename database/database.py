@@ -1,5 +1,5 @@
 import pyrebase
-import email_logic as e
+import database.email_logic as e
 import sys
 sys.path.insert(1, "./")
 
@@ -22,6 +22,9 @@ def firebase_config_setup():
     return db
 
 def create_user_database(name, email, password,db):
+    if(retrieve_user_data("Name", email, db) is not None):
+        return False
+    
     data = {}
 
     dream_dict = {"Skip" : {"Text": "defaultText", "Images": "defaultImage"}}
@@ -29,8 +32,6 @@ def create_user_database(name, email, password,db):
     data["Name"] = name
     data["Password"] = password
     data["Dreams"] = dream_dict
-    
-    print(data)
 
     email_modi = email[:-4]
     db.child("Users").child(email_modi).set(data)
@@ -38,6 +39,7 @@ def create_user_database(name, email, password,db):
     
     email_list = [email]
     e.send_emails(email_list,subject)
+    return True
 
 def retrieve_user_data(key, email,db):
     email = email[:-4]
@@ -84,10 +86,10 @@ def validate_user(email, password, db):
 db = firebase_config_setup()
 
 
-#name = input("What is your name? ")
+name = input("What is your name? ")
 email = input("Enter email: ")
 password = input("Enter password: ")
-#create_user_database(name, email, password, db)
+print(create_user_database(name, email, password, db))
 
 if(validate_user(email, password,db)):
     url = input("enter image url: ")
