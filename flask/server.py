@@ -24,13 +24,15 @@ def login():
     return json.dumps(data)
 
 @app.route("/create", methods=["POST"])
-def login():
+def create():
     name = request.json["name"]
     email = request.json["email"]
     password = request.json["password"]
 
     ## YOUR CODE ##
-    data = {"success": bool}
+
+    success_create = dbs.create_user_database(name, email, password, db)
+    data = {"success": success_create}
     
 
     return json.dumps(data)
