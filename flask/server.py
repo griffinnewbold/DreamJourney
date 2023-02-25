@@ -1,5 +1,6 @@
 import json
 from flask import Flask, request, render_template
+import devfest.database.database as dbs
 
 app = Flask(__name__)
 
@@ -8,8 +9,10 @@ def login():
     email = request.json["email"]
     password = request.json["password"]
 
-    data = {"email": email + "hoeeeeeeeeeeee", 
-        "password": password + "hoeeeeeeeeeeee"}
+    
+    
+    valid_login = dbs.validate_user(email, password)
+    data = {"validate": valid_login}
 
     return json.dumps(data)
 
