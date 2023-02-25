@@ -6,9 +6,6 @@ import Dashboard from './Dashboard'
 import "./Login.css"
 
 export default function Login() {
-
-
-  
   const [stateData, setStateData] = useState(["undefined"]);
 
   // Input references.
@@ -58,12 +55,15 @@ export default function Login() {
   if (stateData[0] === "undefined" || stateData[0]["validate"] === "false")
   return (
     <>
+      <div className="main_layer">
       <h1 className = "header">
         {"DreamJourney"}
       </h1>
-      <p style={descripStyle}>
-        {"Griffin uses dark mode"}
-      </p>
+      </div>
+      <div className="acc_div">
+      <h4 className="subheader">
+          {"Login To Your Account"}
+      </h4>
       <form style={divStyle}>
         <label className="label_email">Email:</label>
         <input type="text"  ref={emailRef} name="email"/><br></br>
@@ -73,6 +73,12 @@ export default function Login() {
         <button onClick={fetchPaths}>Submit</button>
         <LoginError validate={stateData[0]["validate"]}/>
       </form>
+      </div>
+      <div className="footer_layer">
+          <h1 className="footer">
+            {"Created February 25th 2023 By Griffin and Gabe"}
+          </h1>
+      </div>
       <button onClick={transferPage}>Create Account</button>
       <Dashboard data={stateData[0]}/>
     </>
@@ -80,14 +86,16 @@ export default function Login() {
 
   return (
     <>
-      <h1 style={titleStyle}>
-        {"Dream Journey"}
-      </h1>
-      <h2>
-        {"Welcome"}
+      <div className="main_layer">
+        <h1 className="header">
+          {"DreamJourney"}
+        </h1>
+      </div>
+      <h2 className="header2">
+        {"Welcome! A Journey Through your Dreams Await!"}
       </h2>
       <p style={descripStyle}>
-        {"Griffin uses dark mode"}
+        {"Click Add a Drean to Expand Your Collection!"}
       </p>
       <Dashboard data={stateData[0]}/>
     </>
