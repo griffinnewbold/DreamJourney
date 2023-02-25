@@ -1,6 +1,11 @@
 import json
 from flask import Flask, request, render_template
-import devfest.database.database as dbs
+import sys
+sys.path.insert(1, "./")
+import database.database as dbs
+
+db = dbs.firebase_config_setup()
+
 
 app = Flask(__name__)
 
@@ -10,9 +15,11 @@ def login():
     password = request.json["password"]
 
     
-    
-    valid_login = dbs.validate_user(email, password)
+
+    valid_login = dbs.validate_user(email, password,db)
+    print(valid_login)
     data = {"validate": valid_login}
+    
 
     return json.dumps(data)
 

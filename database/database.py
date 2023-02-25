@@ -1,5 +1,7 @@
 import pyrebase
-import email_logic as e
+import database.email_logic as e
+import sys
+sys.path.insert(1, "./")
 
 def firebase_config_setup():
     config = {
@@ -17,12 +19,12 @@ def firebase_config_setup():
     db = firebase.database()
     return db
 
-def create_user_database(name, email, password):
+def create_user_database(name, email, password,db):
     data = {}
     dream_strings = {"Strings": 0}
     dream_images = {"Images": 0}
     data["Name"] = name
-    data["Password"] = str(hash(password))
+    data["Password"] = password
     data["DreamImageArray"] = dream_images
     data["DreamStringArray"]= dream_strings
     
@@ -33,7 +35,8 @@ def create_user_database(name, email, password):
     email_list = [email]
     e.send_emails(email_list,subject)
 
-def retrieve_user_data(key, email):
+def retrieve_user_data(key, email,db):
+    email = email[:-4]
     user = db.child("Users").child(email).get()
     if(user.each() is None):
         return None
@@ -42,9 +45,9 @@ def retrieve_user_data(key, email):
             return element.val()
     return None
 
-def update_user_database(email, imageURL, text):
-    dream_strings = retrieve_user_data("DreamStringArray", email)
-    dream_images  = retrieve_user_data("DreamImageArray", email)
+def update_user_database(email, imageURL, text,db):
+    dream_strings = retrieve_user_data("DreamStringArray", email,db)
+    dream_images  = retrieve_user_data("DreamImageArray", email,db)
     
 
     dream_strings["Strings"] = dream_strings["Strings"]+1
@@ -62,9 +65,9 @@ def update_user_database(email, imageURL, text):
     db.child("Users").child(email).update({"DreamStringArray":dream_strings})
 
 
-def validate_user(email, password):
-    password_hash = retrieve_user_data("Password", email)
-    if(password_hash is not None and str(hash(password)) == password_hash):
+def validate_user(email, password, db):
+    password_retrieve = retrieve_user_data("Password", email, db)
+    if(password_retrieve is not None and password_retrieve == password):
         return True
     return False
 
@@ -78,10 +81,9 @@ def validate_user(email, password):
 #db.child("Users").child("User1").remove()
 
 #------------------------------------------------------------------------------
-
-db = firebase_config_setup()
+'''
 name = input("What is your name? ")
 email = input("What is your email? ")
 password = input("What is your password? ")
 create_user_database(name, email, password)
-
+'''
