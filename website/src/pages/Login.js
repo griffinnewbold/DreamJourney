@@ -65,7 +65,12 @@ export default function Login() {
         <button onClick={fetchPaths}>Submit</button>
         <LoginError validate={stateData}/>
       </form>
-      <Link to="/create"> {"Create your account"} </Link>
+      <button onClick={transferPage}>Create Account</button>
+      
     </>
   )
+
+  function transferPage(){
+    window.location.href = window.location.href + "create"
+  }
 }

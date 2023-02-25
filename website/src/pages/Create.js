@@ -65,6 +65,11 @@ export default function Create() {
           <input type="text" ref={passwordRef} name="password"/><br></br>
           <button onClick={fetchPaths}>Submit</button>
         </form>
+        <button onClick={transferPage}>Return to Login</button>
       </>
     )
+
+    function transferPage(){
+      window.location.href = window.location.href.replace("create","")
+    }
   }

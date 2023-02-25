@@ -84,15 +84,14 @@ def validate_user(email, password, db):
 #------------------------------------------------------------------------------
 '''
 db = firebase_config_setup()
+email = input("What is the email: ")
+imageURLs = []
 
+for i in range(3):
+    image = input("Enter the url of the image: ")
+    imageURLs.append(image)
 
-name = input("What is your name? ")
-email = input("Enter email: ")
-password = input("Enter password: ")
-print(create_user_database(name, email, password, db))
-
-if(validate_user(email, password,db)):
-    url = input("enter image url: ")
-    text = input("enter string of text: ")
-    update_user_database(email, url, text,db)
+text = input("Enter the text associated with the image: ")
+date = input("What is the date? ")
+update_user_database(email, imageURLs, text, date, db)
 '''
