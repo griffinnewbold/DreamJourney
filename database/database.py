@@ -3,6 +3,8 @@ import database.email_logic as e
 import sys
 sys.path.insert(1, "./")
 
+
+
 def firebase_config_setup():
     config = {
       "apiKey": "AIzaSyCaL00piOMooOgJxUt9QOZ9SImZzw9Fti0",
@@ -20,20 +22,24 @@ def firebase_config_setup():
     return db
 
 def create_user_database(name, email, password,db):
+    if(retrieve_user_data("Name", email, db) is not None):
+        return False
+    
     data = {}
-    dream_strings = {"Strings": 0}
-    dream_images = {"Images": 0}
+
+    dream_dict = {"Skip" : {"Text": "defaultText", "Images": "defaultImage"}}
+
     data["Name"] = name
     data["Password"] = password
-    data["DreamImageArray"] = dream_images
-    data["DreamStringArray"]= dream_strings
-    
+    data["Dreams"] = dream_dict
+
     email_modi = email[:-4]
     db.child("Users").child(email_modi).set(data)
     subject = "Welcome to the DreamJourney Beta, " + name
     
     email_list = [email]
     e.send_emails(email_list,subject)
+    return True
 
 def retrieve_user_data(key, email,db):
     email = email[:-4]
@@ -46,23 +52,16 @@ def retrieve_user_data(key, email,db):
     return None
 
 def update_user_database(email, imageURL, text,db):
-    dream_strings = retrieve_user_data("DreamStringArray", email,db)
-    dream_images  = retrieve_user_data("DreamImageArray", email,db)
+    dreams_dict = retrieve_user_data("Dreams", email, db)
+    dreamTitle = "Dream " + str(len(dreams_dict))
     
+    dreams_dict[dreamTitle] = {"Text": text, "Images": imageURL}
+    
+    email = email[:-4]
+    db.child("Users").child(email).update({"Dreams":dreams_dict})
 
-    dream_strings["Strings"] = dream_strings["Strings"]+1
-    dream_images["Images"]  = dream_images["Images"] +1
-    
-    iCount =  dream_strings["Strings"] 
-    
-    dreamTitle = "Dream " + str(iCount)
-    
-    dream_strings[dreamTitle] = text
-    dream_images[dreamTitle] = imageURL
-    
-    
-    db.child("Users").child(email).update({"DreamImageArray":dream_images})
-    db.child("Users").child(email).update({"DreamStringArray":dream_strings})
+    if(dreams_dict["Skip"] is not None):
+        db.child("Users").child(email).child("Dreams").child("Skip").remove()
 
 
 def validate_user(email, password, db):
@@ -80,10 +79,20 @@ def validate_user(email, password, db):
 # Delete whole Node
 #db.child("Users").child("User1").remove()
 
+
+
 #------------------------------------------------------------------------------
 '''
+db = firebase_config_setup()
+
+
 name = input("What is your name? ")
-email = input("What is your email? ")
-password = input("What is your password? ")
-create_user_database(name, email, password)
+email = input("Enter email: ")
+password = input("Enter password: ")
+print(create_user_database(name, email, password, db))
+
+if(validate_user(email, password,db)):
+    url = input("enter image url: ")
+    text = input("enter string of text: ")
+    update_user_database(email, url, text,db)
 '''
