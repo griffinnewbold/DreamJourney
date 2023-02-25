@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Pacifico&family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200&family=Pacifico&family=Righteous&display=swap');
 
 input {
     margin-bottom: 5px;
@@ -25,10 +25,10 @@ input {
 }
 
 button{
-    background-color: #4CAF50; /* Green */
+    background-color: #B0E1E8; 
     border: none;
     font-family: 'Josefin Sans';
-    color: white;
+    color: black;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -37,4 +37,14 @@ button{
     border-radius: 12px;
     margin: 15px;
     border: 2px solid black;
-  }
+    
+}
+
+button:hover{
+    background-color: rgb(82, 77, 77);
+}
+
+input[type=text]{
+    border: 2px solid black;
+    border-radius: 4px;
+}

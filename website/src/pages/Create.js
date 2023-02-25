@@ -54,15 +54,26 @@ export default function Create(props) {
           {"DreamJourney"}
         </h1>
         </div>
-        <div className="image">
-        <img src= "dreamjourney_logo.png" alt="DreamJourney Logo"/>
+        <div>
+          <p className="content">
+            <b>{"Welcome to DreamJourney! We are so excited for you to join our service!"}</b>
+            <br></br><br></br>{"Here is how it works:"}<br></br>
+            <pre>
+            <br></br>{"  1. Create an Account"}<br></br>
+            <br></br>{"  2. Login to Dashboard"}<br></br>
+            <br></br>{"  3. Add a Dream!"}<br></br><br></br>
+            </pre>
+            <b>{"We use an AI that generates images in order to help you visualize your dreams!"}</b>
+            <br></br><br></br>
+            <b>{"All your information is stored securely in a backend database"}</b>
+          </p>
         </div>
+        <div>
         <div className="acc_div">
         <h4 className="subheader">
           {"Create Your Account"}
         </h4>
         <form style={divStyle}>
-
           <label className="label_email">Name:</label>
           <input type="text"  ref={nameRef} name="name"/><br></br>
 
@@ -71,10 +82,19 @@ export default function Create(props) {
   
           <label className="label_pwd">Password: </label>
           <input type="text" ref={passwordRef} name="password"/><br></br>
-          <button onClick={fetchPaths}>Submit</button>
+          <button className = "submit"onClick={fetchPaths}>Submit</button>
         </form>
         </div>
-        <button className = "login"onClick={transferPage}>Return to Login</button>
+        <h4 className="subheader_log">
+          {"Already Have an Account?"}
+        </h4>
+        <button className = "login"onClick={transferPage}>Login</button>
+        </div>
+        <div className="footer_layer">
+          <h1 className="footer">
+            {"Created February 25th 2023 By Griffin and Gabe"}
+          </h1>
+        </div>
       </>
     )
 
