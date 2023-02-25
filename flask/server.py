@@ -41,12 +41,19 @@ def create():
 @app.route("/query", methods=["POST"])
 def query(email):
     return dbs.retrieve_user_data("Dreams", email,db)
-    
+
+@app.route("/parseDate", methods=["POST"])
+def parseDate(date):
+    year = date[0:4]
+    month = date[5:7]
+    day = date[8:10]
+    return month + "/" + day + "/" + year  
+
 @app.route("/add", methods=["POST"])
 def add():
     """ website 
     """
-    date = request.json["date"]
+    date = parseDate(request.json["date"])
     email = request.json["email"]
     text = request.json["text"]
 
@@ -67,6 +74,7 @@ def add():
     response = dict(json.loads(response.content.decode('utf-8')))
     images = [link.replace("///", "/") for link in response["output"]]
 
+    dbs.update_user_database(email, images, text, date, db)
     reply = {"images": images}
     
     return json.dumps(reply)

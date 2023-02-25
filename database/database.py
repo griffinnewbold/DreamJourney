@@ -61,7 +61,7 @@ def update_user_database(email, imageURL, text, date, db):
         pass
 
     dreamTitle = ""
-    if(len(dreams_dict)+1 >= 10):
+    if(len(dreams_dict)+1 < 10):
         dreamTitle = "Dream 0" + str(len(dreams_dict)+1)
     else:    
         dreamTitle = "Dream " + str(len(dreams_dict)+1)
