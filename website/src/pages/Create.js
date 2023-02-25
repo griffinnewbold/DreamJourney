@@ -1,5 +1,6 @@
 import React, {useState, useRef} from "react"
 import axios from "axios"
+import "./Create.css"
 
 export default function Create(props) {
 
@@ -7,6 +8,10 @@ export default function Create(props) {
     const nameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
+<<<<<<< HEAD
+=======
+
+>>>>>>> a63dc64defe3bae3d0d509130403e2c538f47de9
   
     function fetchPaths() {  
       
@@ -47,25 +52,52 @@ export default function Create(props) {
   
     return (
       <>
-        <h1 style={titleStyle}>
-          {"Create Your Account"}
+        <div className="main_layer">
+        <h1 className="header">
+          {"DreamJourney"}
         </h1>
-        <p style={descripStyle}>
-          {"Griffin uses dark mode"}
-        </p>
+        </div>
+        <div>
+          <p className="content">
+            <b>{"Welcome to DreamJourney! We are so excited for you to join our service!"}</b>
+            <br></br><br></br>{"Here is how it works:"}<br></br>
+            <pre>
+            <br></br>{"  1. Create an Account"}<br></br>
+            <br></br>{"  2. Login to Dashboard"}<br></br>
+            <br></br>{"  3. Add a Dream!"}<br></br><br></br>
+            </pre>
+            <b>{"We use an AI that generates images in order to help you visualize your dreams!"}</b>
+            <br></br><br></br>
+            <b>{"All your information is stored securely in a backend database"}</b>
+          </p>
+        </div>
+        <div>
+        <div className="acc_div">
+        <h4 className="subheader">
+          {"Create Your Account"}
+        </h4>
         <form style={divStyle}>
-
-          <label>Name:</label>
+          <label className="label_email">Name:</label>
           <input type="text"  ref={nameRef} name="name"/><br></br>
 
-          <label>Email:</label>
+          <label className="label_email">Email:</label>
           <input type="text"  ref={emailRef} name="email"/><br></br>
   
-          <label>Password:</label>
+          <label className="label_pwd">Password: </label>
           <input type="text" ref={passwordRef} name="password"/><br></br>
-          <button onClick={fetchPaths}>Submit</button>
+          <button className = "submit"onClick={fetchPaths}>Submit</button>
         </form>
-        <button onClick={transferPage}>Return to Login</button>
+        </div>
+        <h4 className="subheader_log">
+          {"Already Have an Account?"}
+        </h4>
+        <button className = "login"onClick={transferPage}>Login</button>
+        </div>
+        <div className="footer_layer">
+          <h1 className="footer">
+            {"Created February 25th 2023 By Griffin and Gabe"}
+          </h1>
+        </div>
       </>
     )
 

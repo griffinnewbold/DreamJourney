@@ -53,15 +53,26 @@ def retrieve_user_data(key, email,db):
 
 def update_user_database(email, imageURL, text, date, db):
     dreams_dict = retrieve_user_data("Dreams", email, db)
-    dreamTitle = "Dream " + str(len(dreams_dict))
+
+    try:
+        if(dreams_dict["Skip"] is not None):
+            db.child("Users").child(email).child("Dreams").child("Skip").remove()
+    except:
+        pass
+
+    dreamTitle = ""
+    if(len(dreams_dict)+1 >= 10):
+        dreamTitle = "Dream 0" + str(len(dreams_dict)+1)
+    else:    
+        dreamTitle = "Dream " + str(len(dreams_dict)+1)
     
     dreams_dict[dreamTitle] = {"Text": text, "Images": imageURL, "Date": date}
     
     email = email[:-4]
     db.child("Users").child(email).update({"Dreams":dreams_dict})
 
-    if(dreams_dict["Skip"] is not None):
-        db.child("Users").child(email).child("Dreams").child("Skip").remove()
+    
+
 
 
 def validate_user(email, password, db):
@@ -85,13 +96,11 @@ def validate_user(email, password, db):
 '''
 db = firebase_config_setup()
 email = input("What is the email: ")
-imageURLs = []
-
-for i in range(3):
-    image = input("Enter the url of the image: ")
-    imageURLs.append(image)
-
+imageURLs = ['https://i.postimg.cc/pLpYrtP8/lib.png', 'https://i.postimg.cc/B6dRYCN7/subway.png', 'https://i.postimg.cc/BZN3vZ16/Trigo-streets-of-new-york-city-flooded-8k-9c42e379-8890-4f75-887f-04061bd8e2a6.png']
 text = input("Enter the text associated with the image: ")
 date = input("What is the date? ")
-update_user_database(email, imageURLs, text, date, db)
+
+for i in range(10):
+    update_user_database(email, imageURLs, text, date, db)
+    t.sleep(2)
 '''
