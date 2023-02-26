@@ -2,7 +2,7 @@
 .element {
     text-align: center;
     margin: auto;
-    width: 1000px;
+    width: 1200px;
     font-size: 20px;
     display: flex;
     background-color: #1E1F28;
@@ -22,7 +22,9 @@
     width: 40%;
     font-family: 'Roboto Mono', monospace;
     font-size: 17px;
-    color: #EDF5E0
+    color: #EDF5E0;
+    text-align: justify;
+    padding-right: 10px;
 }
 
 .image {
