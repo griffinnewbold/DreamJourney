@@ -8,14 +8,9 @@ export default function Create(props) {
     const nameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
-<<<<<<< HEAD
-=======
-
->>>>>>> ff996c576674dcf50b3f2c628ad6e963120a83ff
   
-    function fetchPaths(event) {  
+    function fetchPaths() {  
       
-      event.preventDefault()
       const name = nameRef.current.value
       const email = emailRef.current.value
       const password = passwordRef.current.value
@@ -24,7 +19,6 @@ export default function Create(props) {
   
       emailRef.current.value = null
       passwordRef.current.value = null
-      console.log("hoeeeee")
       axios.post(
         "http://127.0.0.1:8000/create", 
         {

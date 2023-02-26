@@ -58,7 +58,7 @@ def add():
     text = request.json["text"]
 
     jsons = {
-        "key": "lywSnAEhQsV8J2SgETq903xSBCHIoSOh0U8vRzkSQWtJYeJ3pfCOytrTMNP7",
+        "key": "nR6I2mbVdrc3nxe6A8TDjdGkE3kxsoGCDVzySW9VTpJlvcX8mkAxoGuK7xG5",
         "model_id": "arcane-diffusion",
         "prompt": text,
         "negative_prompt": "",

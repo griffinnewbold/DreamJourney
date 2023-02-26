@@ -53,12 +53,15 @@ def retrieve_user_data(key, email,db):
 
 def update_user_database(email, imageURL, text, date, db):
     dreams_dict = retrieve_user_data("Dreams", email, db)
-
-    try:
-        if(dreams_dict["Skip"] is not None):
-            db.child("Users").child(email).child("Dreams").child("Skip").remove()
-    except:
-        pass
+    is_skip = False
+    for key in reversed(dreams_dict.keys()):
+        if(str(key) == str("Skip")):
+            is_skip = True
+            break
+    
+    email = email[:-4]
+    if(is_skip):
+        db.child("Users").child(email).child("Dreams").child("Skip").remove()
 
     dreamTitle = ""
     if(len(dreams_dict)+1 < 10):
@@ -67,8 +70,6 @@ def update_user_database(email, imageURL, text, date, db):
         dreamTitle = "Dream " + str(len(dreams_dict)+1)
     
     dreams_dict[dreamTitle] = {"Text": text, "Images": imageURL, "Date": date}
-    
-    email = email[:-4]
     db.child("Users").child(email).update({"Dreams":dreams_dict})
 
     
@@ -100,7 +101,5 @@ imageURLs = ['https://i.postimg.cc/pLpYrtP8/lib.png', 'https://i.postimg.cc/B6dR
 text = input("Enter the text associated with the image: ")
 date = input("What is the date? ")
 
-for i in range(10):
-    update_user_database(email, imageURLs, text, date, db)
-    t.sleep(2)
+update_user_database(email, imageURLs, text, date, db)
 '''
