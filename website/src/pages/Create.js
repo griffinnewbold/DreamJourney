@@ -9,8 +9,9 @@ export default function Create(props) {
     const emailRef = useRef()
     const passwordRef = useRef()
   
-    function fetchPaths() {  
-      
+    function fetchPaths(event) {  
+      event.preventDefault()
+
       const name = nameRef.current.value
       const email = emailRef.current.value
       const password = passwordRef.current.value

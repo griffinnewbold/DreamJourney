@@ -60,7 +60,7 @@ export default function Login() {
         {"DreamJourney"}
       </h1>
       </div>
-      <div className="acc_div">
+      <div className="lacc_div">
       <h4 className="subheader">
           {"Login To Your Account"}
       </h4>
@@ -79,7 +79,10 @@ export default function Login() {
             {"Created February 25th 2023 By Griffin and Gabe"}
           </h1>
       </div>
-      <button onClick={transferPage}>Create Account</button>
+      <button className="c_account"onClick={transferPage}>Create Account</button>
+      <h4 className="subheader_create">
+          {"Don't Have an Account?"}
+      </h4>
       <Dashboard data={stateData[0]}/>
     </>
   )
@@ -94,7 +97,7 @@ export default function Login() {
       <h2 className="header2">
         {"Welcome! A Journey Through your Dreams Await!"}
       </h2>
-      <p style={descripStyle}>
+      <p className="header2">
         {"Click Add a Drean to Expand Your Collection!"}
       </p>
       <Dashboard data={stateData[0]}/>

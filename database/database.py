@@ -60,17 +60,19 @@ def update_user_database(email, imageURL, text, date, db):
             break
     
     email = email[:-4]
-    if(is_skip):
-        db.child("Users").child(email).child("Dreams").child("Skip").remove()
 
     dreamTitle = ""
-    if(len(dreams_dict)+1 < 10):
+    if(is_skip):
+        dreamTitle = "Dream 01"
+    elif(len(dreams_dict)+1 < 10):
         dreamTitle = "Dream 0" + str(len(dreams_dict)+1)
     else:    
         dreamTitle = "Dream " + str(len(dreams_dict)+1)
     
     dreams_dict[dreamTitle] = {"Text": text, "Images": imageURL, "Date": date}
     db.child("Users").child(email).update({"Dreams":dreams_dict})
+    if(is_skip):
+        db.child("Users").child(email).child("Dreams").child("Skip").remove()
 
     
 
@@ -96,10 +98,15 @@ def validate_user(email, password, db):
 #------------------------------------------------------------------------------
 '''
 db = firebase_config_setup()
-email = input("What is the email: ")
-imageURLs = ['https://i.postimg.cc/pLpYrtP8/lib.png', 'https://i.postimg.cc/B6dRYCN7/subway.png', 'https://i.postimg.cc/BZN3vZ16/Trigo-streets-of-new-york-city-flooded-8k-9c42e379-8890-4f75-887f-04061bd8e2a6.png']
-text = input("Enter the text associated with the image: ")
-date = input("What is the date? ")
+email = "gabrielguerratrigo20@gmail.com"
+imageURLs = ['https://cdn.midjourney.com/cdd88b1a-36d4-4ef8-beec-612e401cbcdb/grid_0.png', 
+             'https://cdn.midjourney.com/93cf6260-6a5c-4464-a071-5b318e155df3/grid_0.png', 
+             'https://cdn.midjourney.com/1499b8ff-832a-4272-b21a-af33f0a84b7c/grid_0.png']
+
+text = "I dreamt that I was a bird, but while I was a bird the apocalypse began and before I  "
+text += "knew it the lushful world I had known had turned into a fiery inferno."
+
+date = "02/21/2023"
 
 update_user_database(email, imageURLs, text, date, db)
 '''
