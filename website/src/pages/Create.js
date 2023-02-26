@@ -8,10 +8,6 @@ export default function Create(props) {
     const nameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
-<<<<<<< HEAD
-=======
-
->>>>>>> ff996c576674dcf50b3f2c628ad6e963120a83ff
   
     function fetchPaths(event) {  
       
