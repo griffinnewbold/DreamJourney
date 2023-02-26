@@ -57,13 +57,12 @@ def update_user_database(email, imageURL, text, date, db):
     for key in reversed(dreams_dict.keys()):
         if(str(key) == str("Skip")):
             is_skip = True
+            print("found")
             break
     
-    try:
-        if(is_skip):
-            db.child("Users").child(email).child("Dreams").child("Skip").remove()
-    except:
-        pass
+    email = email[:-4]
+    if(is_skip):
+        db.child("Users").child(email).child("Dreams").child("Skip").remove()
 
     dreamTitle = ""
     if(len(dreams_dict)+1 < 10):
@@ -72,11 +71,7 @@ def update_user_database(email, imageURL, text, date, db):
         dreamTitle = "Dream " + str(len(dreams_dict)+1)
     
     dreams_dict[dreamTitle] = {"Text": text, "Images": imageURL, "Date": date}
-    
-    email = email[:-4]
-    
-    
-    #db.child("Users").child(email).update({"Dreams":dreams_dict})
+    db.child("Users").child(email).update({"Dreams":dreams_dict})
     
     
 
@@ -100,6 +95,7 @@ def validate_user(email, password, db):
 
 
 #------------------------------------------------------------------------------
+
 '''
 db = firebase_config_setup()
 email = input("What is the email: ")
@@ -109,4 +105,5 @@ date = input("What is the date? ")
 
 update_user_database(email, imageURLs, text, date, db)
 '''
+
 
