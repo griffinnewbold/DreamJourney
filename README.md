@@ -16,7 +16,3 @@ As depicted in the image below, ```Dream Journey``` has four main components, th
 When the user interacts with the website, the website makes ```POST``` requests to the backend server, either requesting data (such as the user's records), or sending
 data (when the user creates new records). In order to answer the ```POST``` requests, the backend server makes further calls to the database (either to query existing
 data or to store new data) and to the ```Stable Diffution``` API (to generate new images).
-  
-# Repository structure
-  
- 
