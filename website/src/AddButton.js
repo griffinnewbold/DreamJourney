@@ -34,7 +34,7 @@ export default function AddButton({data}) {
 
     function logElement(event) {
         var currentTime = new Date()
-        setButtonState(["closed"])
+        setButtonState(["loading"])
         event.preventDefault()
         const text = textRef.current.value
         const email = data["email"]
@@ -49,6 +49,7 @@ export default function AddButton({data}) {
             }
         ).then(response => {
             console.log(response.data)
+            setButtonState(["closed"])
           })
     }
 
@@ -60,6 +61,13 @@ export default function AddButton({data}) {
         )
     }
 
+    if (buttonState[0] == "loading") {
+        return (
+            <div style={divStyle}>
+                {"Loading"}
+            </div>
+        )
+    }
     if (buttonState[0] == "open") {
 
         return (

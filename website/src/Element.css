@@ -1,16 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 .element {
     text-align: center;
     margin: auto;
     width: 1000px;
     font-size: 20px;
     display: flex;
-    background-color: paleturquoise;
+    background-color: #1E1F28;
     margin-bottom: 20px;
 }
 
 .picture {
     width: 20%; 
-    background-color: pink;
+    background-color: #1E1F28;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 15px;
@@ -19,6 +20,9 @@
 
 .description {
     width: 40%;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 17px;
+    color: #EDF5E0
 }
 
 .image {
@@ -26,6 +30,6 @@
 }
 
 .date {
-    background-color: peachpuff;
+    background-color: #1E1F28;
     padding: 10px
 }
