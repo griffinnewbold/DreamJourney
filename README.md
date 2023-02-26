@@ -2,6 +2,9 @@
 
 Many people would like to keep dream journals, but often lack the motivation to do so. ```Dream Journey``` is a website that aims to make the activity of keeping a
 dream journal more fun by using ```Stable Diffusion``` (an open source image generation software) to create illustrations of dreams based on their textual description.
+
+![](https://i.postimg.cc/pTSND4Vy/ezgif-com-video-to-gif.gif)
+
 # How it works
 As depicted in the image below, ```Dream Journey``` has four main components, that interact to create the final product:
   * Website: made with ```JavaScript``` and ```React```.
