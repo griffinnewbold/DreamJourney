@@ -91,7 +91,10 @@ export default function Create(props) {
         </div>
         <div className="footer_layer">
           <h1 className="footer">
-            {"Created February 25th 2023 By Griffin and Gabe"}
+            {"Created February 25th 2023 By Gabriel Trigo and Griffin Newbold as a hackathon project for Devfest 2023."}
+          </h1>
+          <h1 className="footer">
+          {"All rights reserved."}
           </h1>
         </div>
       </>

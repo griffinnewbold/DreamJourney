@@ -76,7 +76,7 @@ export default function Login() {
       </div>
       <div className="footer_layer">
           <h1 className="footer">
-            {"Created February 25th 2023 By Griffin and Gabe"}
+            {"Created February 25th 2023 By Gabriel Trigo and Griffin Newbold as a Hackathon project for Devfest 2023.\n All rights reserved."}
           </h1>
       </div>
       <button className="c_account"onClick={transferPage}>Create Account</button>

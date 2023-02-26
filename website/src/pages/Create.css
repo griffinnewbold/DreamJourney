@@ -53,6 +53,7 @@ input {
 }
 
 .footer_layer {
+    text-align: left;
     background-color: #1E1F28;
     margin:0;
     padding-top: 0.5%;
@@ -60,7 +61,7 @@ input {
     position:absolute;
     bottom:0;
     width:99.5%;
-    height:60px;
+    height:100px;
 }
 
 .login {
@@ -92,12 +93,12 @@ body{
     font-size: 20px;
     font-family: 'Roboto Mono', monospace;
     font-weight: 300;
-    position: absolute;
-    text-align: center;
+    text-align: left;
     left:29%;
     top: 0;
     bottom: 0px;
     color: #EDF5E0;
+    padding-left: 5px;
 }
 
 .content{
