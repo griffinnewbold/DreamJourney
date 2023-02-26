@@ -30,6 +30,7 @@ export default function Create(props) {
       ).then(response => {
         console.log(response.data)
       })
+      setTimeout(transferPage(), 3000);
     }
   
     const titleStyle = {

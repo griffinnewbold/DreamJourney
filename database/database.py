@@ -57,9 +57,18 @@ def update_user_database(email, imageURL, text, date, db):
     for key in reversed(dreams_dict.keys()):
         if(str(key) == str("Skip")):
             is_skip = True
+<<<<<<< HEAD
             break
     
     email = email[:-4]
+=======
+            print("found")
+            break
+    
+    email = email[:-4]
+    if(is_skip):
+        db.child("Users").child(email).child("Dreams").child("Skip").remove()
+>>>>>>> master
 
     dreamTitle = ""
     if(is_skip):
@@ -71,9 +80,13 @@ def update_user_database(email, imageURL, text, date, db):
     
     dreams_dict[dreamTitle] = {"Text": text, "Images": imageURL, "Date": date}
     db.child("Users").child(email).update({"Dreams":dreams_dict})
+<<<<<<< HEAD
     if(is_skip):
         db.child("Users").child(email).child("Dreams").child("Skip").remove()
 
+=======
+    
+>>>>>>> master
     
 
 
@@ -96,6 +109,7 @@ def validate_user(email, password, db):
 
 
 #------------------------------------------------------------------------------
+
 '''
 db = firebase_config_setup()
 email = "gabrielguerratrigo20@gmail.com"
@@ -103,6 +117,7 @@ imageURLs = ['https://cdn.midjourney.com/cdd88b1a-36d4-4ef8-beec-612e401cbcdb/gr
              'https://cdn.midjourney.com/93cf6260-6a5c-4464-a071-5b318e155df3/grid_0.png', 
              'https://cdn.midjourney.com/1499b8ff-832a-4272-b21a-af33f0a84b7c/grid_0.png']
 
+<<<<<<< HEAD
 text = "I dreamt that I was a bird, but while I was a bird the apocalypse began and before I  "
 text += "knew it the lushful world I had known had turned into a fiery inferno."
 
@@ -110,3 +125,9 @@ date = "02/21/2023"
 
 update_user_database(email, imageURLs, text, date, db)
 '''
+=======
+update_user_database(email, imageURLs, text, date, db)
+'''
+
+
+>>>>>>> master
