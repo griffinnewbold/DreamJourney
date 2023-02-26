@@ -36,7 +36,7 @@ button{
     font-size: 16px;
     border-radius: 12px;
     margin: 15px;
-    border: 2px solid black;
+    border: 1px solid black;
     
 }
 
@@ -45,12 +45,12 @@ button:hover{
 }
 
 input[type=text]{
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 4px;
 }
 
 input[type=password]{
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 4px;
 }
 
@@ -72,12 +72,13 @@ input[type=password]{
 }
 
 .c_account {
+    height: 50px;
+    width: 250px;
     position: absolute;
     bottom: 25%;
-    width: 25%;
-    margin-left: 38.5%;
+    margin-left: 44.5%;
     text-align: center;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .subheader_create {
@@ -93,15 +94,4 @@ input[type=password]{
     position: absolute;
     top:20%;
     right: 37.5%;
-}
-
-.l_footer{
-    font-size: 40px;
-    font-family: 'Josefin Sans';
-    position: absolute;
-    text-align: center;
-    left:27%;
-    top: 0;
-    bottom: 0px;
-    color: black;
 }

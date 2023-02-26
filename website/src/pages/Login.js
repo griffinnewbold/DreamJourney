@@ -70,7 +70,7 @@ export default function Login() {
 
         <label className="label_pwd">Password: </label>
         <input type="password" ref={passwordRef} name="password"/><br></br>
-        <button onClick={fetchPaths}>Submit</button>
+        <button className="submit"onClick={fetchPaths}>Submit</button>
         <LoginError validate={stateData[0]["validate"]}/>
       </form>
       </div>
