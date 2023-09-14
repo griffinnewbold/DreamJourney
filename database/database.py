@@ -7,14 +7,7 @@ sys.path.insert(1, "./")
 
 def firebase_config_setup():
     config = {
-      "apiKey": "AIzaSyCaL00piOMooOgJxUt9QOZ9SImZzw9Fti0",
-      "authDomain": "dreamjourney-9e24f.firebaseapp.com",
-      "databaseURL": "https://dreamjourney-9e24f-default-rtdb.firebaseio.com",
-      "projectId": "dreamjourney-9e24f",
-      "storageBucket": "dreamjourney-9e24f.appspot.com",
-      "messagingSenderId": "362150677267",
-      "appId": "1:362150677267:web:8172786302155b50ba28e6",
-      "measurementId": "G-X26MTWKSQX"    
+        #old data   
     }
 
     firebase = pyrebase.initialize_app(config)
