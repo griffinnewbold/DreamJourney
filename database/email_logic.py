@@ -3,10 +3,6 @@ import ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-smtp_port = 587                 
-smtp_server = "smtp.gmail.com"  
-email_from = "dreamjourney2023@gmail.com"
-pswd = "ofkjrkycmpvxfhtj"
 
 def send_emails(email_list, subject):
 
