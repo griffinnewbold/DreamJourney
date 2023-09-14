@@ -58,17 +58,7 @@ def add():
     text = request.json["text"]
 
     jsons = {
-        "key": "nR6I2mbVdrc3nxe6A8TDjdGkE3kxsoGCDVzySW9VTpJlvcX8mkAxoGuK7xG5",
-        "model_id": "arcane-diffusion",
-        "prompt": text,
-        "negative_prompt": "",
-        "width": "512",
-        "height": "512",
-        "samples": "3",
-        "safety_checker": "no",
-        "num_inference_steps": "30",
-        "enhance_prompt": "no",
-        "guidance_scale": 7.5,
+        #old data
     }
     response = requests.post("https://stablediffusionapi.com/api/v4/dreambooth", json=jsons)
     response = dict(json.loads(response.content.decode('utf-8')))
